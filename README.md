@@ -18,6 +18,7 @@
 - [Overview](#overview)
   - [How to use RepoAuditor](#how-to-use-repoauditor)
   - [Personal Access Token](#personal-access-token)
+  - [Example Usage](#example-usage)
 - [Installation](#installation)
 - [Development](#development)
 - [Additional Information](#additional-information)
@@ -45,12 +46,30 @@ To get a list of command line options, you can run
 repo_auditor --help
 ```
 
-The most common use case would be to audit a GitHub repository.
+### Personal Access Token (PAT)
+
+The most common use case for `RepoAuditor` would be to audit a GitHub repository.
 In order to allow `RepoAuditor` to read the repository, you first need to generate a Personal Access Token or PAT.
-Please refer to the [GitHub documentation on Personal Access Tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) to generate a `Fine-grained PAT` for use.
+
+Please refer to the [GitHub documentation on Personal Access Tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) for details about a `Fine-grained PAT` which we will be using.
+
+To generate the Fine-grained PAT, we perform the following steps:
+
+1. Go to `Settings -> Developer settings -> Personal Access Token -> Fine-grained tokens`.
+2. Click on `Generate new token`.
+3. Give the token a name and a description.
+4. Set an appropriate expiration date.
+5. Under `Repository Access`, select `All repositories`.
+6. For permissions, we need to go to `Repository permissions`.
+7. Enable Read-Write access to `Contents`, and Read access to `Administration`, `Secret Scanning` and `Dependabot Alerts`.
+8. Click on `Generate token`.
+9. Copy the generated string. This is your PAT.
+
 After obtaining the PAT, you can save it in a file (e.g. `PAT`) which `RepoAuditor` can read on operation.
 
-With the PAT file, you can now run `RepoAuditor` on your GitHub repository.
+### Example Usage
+
+With the above generated PAT file, you can now run `RepoAuditor` on your GitHub repository.
 As an example, we will use the [python-helloworld](https://github.com/dbarnett/python-helloworld) repo.
 
 **NOTE** You need to fork the repository since your default PAT only has access to repos under your account.
@@ -61,10 +80,6 @@ repo_auditor --include GitHub --GitHub-url https://github.com/<username>/python-
 ```
 
 `RepoAuditor` will generate a series of messages describing all the issues in the repository, along with the rationale behind them and the steps for resolution.
-
-
-### Personal Access Token (PAT)
-
 
 ## Installation
 
