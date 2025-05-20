@@ -28,7 +28,6 @@
 TODO: Complete this section
 
 ### How to use RepoAuditor
-TODO: Complete this section
 
 <!-- Content below this delimiter will be copied to the generated README.md file. DO NOT REMOVE THIS COMMENT, as it will cause regeneration to fail. -->
 
