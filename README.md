@@ -29,6 +29,28 @@ TODO: Complete this section
 
 <!-- Content below this delimiter will be copied to the generated README.md file. DO NOT REMOVE THIS COMMENT, as it will cause regeneration to fail. -->
 
+Once installed, you can invoke the following to get a list of command line options.
+```shell
+repo_auditor --help
+```
+
+The most common use case would be to audit a GitHub repository.
+In order to allow `RepoAuditor` to read the repository, you first need to generate a Personal Access Token or PAT.
+Please refer to the [GitHub documentation on Personal Access Tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) to generate a `Fine-grained PAT` for use.
+After obtaining the PAT, you can save it in a file (e.g. `PAT`) which `RepoAuditor` can read on operation.
+
+With the PAT file, you can now run `RepoAuditor` on your GitHub repository.
+As an example, we will use the [python-helloworld](https://github.com/dbarnett/python-helloworld) repo.
+
+**NOTE** You need to fork the repository since your default PAT only has access to repos under your account.
+
+To run `RepoAuditor`, we can enter the following in the command-line:
+```shell
+repo_auditor --include GitHub --GitHub-url https://github.com/<username>/python-helloworld --GitHub-pat PAT
+```
+
+`RepoAuditor` will generate a series of messages describing all the issues in the repository, along with the rationale behind them and the steps for resolution.
+
 ## Installation
 
 | Installation Method | Command |
