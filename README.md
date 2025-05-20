@@ -16,6 +16,8 @@
 
 ## Contents
 - [Overview](#overview)
+  - [How to use RepoAuditor](#how-to-use-repoauditor)
+  - [Personal Access Token](#personal-access-token)
 - [Installation](#installation)
 - [Development](#development)
 - [Additional Information](#additional-information)
@@ -29,7 +31,16 @@ TODO: Complete this section
 
 <!-- Content below this delimiter will be copied to the generated README.md file. DO NOT REMOVE THIS COMMENT, as it will cause regeneration to fail. -->
 
-Once installed, you can invoke the following to get a list of command line options.
+Once installed, you can invoke the following to verify if `RepoAuditor` is installed correctly:
+```shell
+repo_auditor --version
+```
+and you should see something like
+```shell
+RepoAuditor vX.X.X
+```
+
+To get a list of command line options, you can run
 ```shell
 repo_auditor --help
 ```
@@ -50,6 +61,10 @@ repo_auditor --include GitHub --GitHub-url https://github.com/<username>/python-
 ```
 
 `RepoAuditor` will generate a series of messages describing all the issues in the repository, along with the rationale behind them and the steps for resolution.
+
+
+### Personal Access Token (PAT)
+
 
 ## Installation
 
