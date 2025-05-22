@@ -413,7 +413,7 @@ def args() -> list[str]:
         "--include",
         "GitHub",
         "--GitHub-url",
-        "https://github.com/gt-sse-center/RepoAuditor",
+        "https://github.com/varunagrawal/RepoAuditor",
     ]
 
 
