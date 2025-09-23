@@ -1,0 +1,1000 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Audits repositories for best practices.">
+      
+      
+      
+      
+        <link rel="prev" href="../config_file/">
+      
+      
+        <link rel="next" href="../DEVELOPMENT/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>Writing a Custom Plugin - RepoAuditor</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../termynal.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#writing-a-custom-plugin" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="RepoAuditor" class="md-header__button md-logo" aria-label="RepoAuditor" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RepoAuditor
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Writing a Custom Plugin
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="RepoAuditor" class="md-nav__button md-logo" aria-label="RepoAuditor" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    RepoAuditor
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PAT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PAT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Usage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../config_file/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Config File
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Writing a Custom Plugin
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Writing a Custom Plugin
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plugin-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plugin Components
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Plugin Components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#requirement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query" class="md-nav__link">
+    <span class="md-ellipsis">
+      Query
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#module" class="md-nav__link">
+    <span class="md-ellipsis">
+      Module
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pluginpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plugin.py
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-the-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running the Plugin
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DEVELOPMENT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Development
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CONTRIBUTING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contributing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plugin-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plugin Components
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Plugin Components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#requirement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query" class="md-nav__link">
+    <span class="md-ellipsis">
+      Query
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#module" class="md-nav__link">
+    <span class="md-ellipsis">
+      Module
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pluginpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plugin.py
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-the-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running the Plugin
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="writing-a-custom-plugin">Writing a Custom Plugin</h1>
+<p>RepoAuditor allows for extensibility by using a plugin system powered by <a href="https://pluggy.readthedocs.io/en/stable/">pluggy</a>.</p>
+<p>On this page, you will learn the steps involved to develop custom, 3rd party plugins to extend RepoAuditor's functionality for your own use cases.</p>
+<h2 id="setup">Setup</h2>
+<p>To setup, create a new repository. We will call ours <code>ReadmeCheck</code> and we will use it to check if a repository has a <code>README.md</code> file.
+We know this is is a bit redundant but it lays the groundwork for this tutorial.</p>
+<p>Follow the below commands to setup the basic skeleton project.</p>
+<div class="termy" data-termynal data-ty-macos data-ty-title="bash"><span data-ty>mkdir ReadmeCheck &amp;&amp; cd ReadmeCheck<br>touch pyproject.toml<br>touch README.md<br>mkdir ReadmeCheck<br>touch ReadmeCheck/__init__.py<br></span></div>
+
+<p>We first start off by creating a very simple <code>pyproject.toml</code> file.</p>
+<pre><code class="language-toml">[project]
+name = &quot;ReadmeCheck&quot;
+description = &quot;Custom plugin tutorial for RepoAuditor&quot;
+readme = &quot;README.md&quot;
+authors = [
+    { name = &quot;Scientific Software Engineering Center at Georgia Tech&quot;, email = &quot;sse-center@gatech.edu&quot; },
+]
+requires-python = &quot;&gt;= 3.10&quot;
+dependencies = [
+    &quot;dbrownell-common&gt;=0.16.0&quot;,
+    &quot;gitpython&gt;=3.1.44&quot;,
+    &quot;RepoAuditor&gt;=0.4.4&quot;,
+]
+version = &quot;0.0.0&quot;
+classifiers = [
+    &quot;Operating System :: MacOS&quot;,
+    &quot;Operating System :: Microsoft :: Windows&quot;,
+    &quot;Operating System :: POSIX :: Linux&quot;,
+    &quot;Programming Language :: Python&quot;,
+    &quot;Programming Language :: Python :: 3.13&quot;,
+    &quot;Programming Language :: Python :: 3.12&quot;,
+    &quot;Programming Language :: Python :: 3.11&quot;,
+    &quot;Programming Language :: Python :: 3.10&quot;,
+]
+
+[project.license]
+text = &quot;MIT&quot;
+
+[project.entry-points.RepoAuditor]
+ReadmCheckPlugin = &quot;ReadmeCheck.Plugin&quot;
+
+[build-system]
+requires = [&quot;hatchling&quot;]
+build-backend = &quot;hatchling.build&quot;
+</code></pre>
+<h2 id="plugin-components">Plugin Components</h2>
+<p>For any RepoAuditor plugin, we need 4 files:</p>
+<ol>
+<li><code>Requirement.py</code>: Contains the class which inherits from <code>Requirement</code>, with the logic to actually check if the requirement is fulfilled.</li>
+<li><code>Query.py</code>: Has a class which inherits from <code>Query</code> and obtains the necessary data which is then passed to the requirement(s).</li>
+<li><code>Module.py</code>: A file with a class which inherits from <code>Module</code> and defines the dynamic arguments and which queries to execute for obtaining necessary data.</li>
+<li><code>Plugin.py</code>: Tells <code>pluggy</code> how to load the plugin so RepoAuditor can see it.</li>
+</ol>
+<p>The files would be organized as:</p>
+<pre><code class="language-sh">- README.md
+- pyproject.toml
+- ReadmeCheck
+ | - Requirement.py
+ | - Query.py
+ | - Module.py
+ | - Plugin.py
+</code></pre>
+<h3 id="requirement">Requirement</h3>
+<p>To define a requirement, we define a class which inherits from <code>Requirement</code> and implements three methods:</p>
+<ol>
+<li><code>__init__(self) -&gt; None</code>: The constructor.</li>
+<li><code>GetDynamicArgDefinitions(self, argument_separator: str) -&gt; dict[str, TypeDefinitionItemType]</code>: A method which defines requirement specific dynamic arguments.</li>
+<li><code>_EvaluateImpl(self, query_data: dict[str, Any], requirement_args: dict[str, Any], ) -&gt; Requirement.EvaluateImplResult</code>: The logic for verifying the requirement.</li>
+</ol>
+<p>The definition for the <code>Requirement.py</code> file would be the following. Please see the inline comments for details about specific lines of code.</p>
+<pre><code class="language-python">&quot;&quot;&quot;Contains the Readme object.&quot;&quot;&quot;
+
+import textwrap
+from pathlib import Path
+from typing import Any
+
+import typer
+from dbrownell_Common.TyperEx import \
+    TypeDefinitionItemType  # type: ignore[import-untyped]
+from dbrownell_Common.Types import override  # type: ignore[import-untyped]
+from RepoAuditor.Requirement import EvaluateResult, ExecutionStyle, Requirement
+
+
+class ReadmeRequirement(Requirement):
+    &quot;&quot;&quot;Requirement to validate a repository's README.&quot;&quot;&quot;
+
+    def __init__(self) -&gt; None:
+        super().__init__(
+            name=&quot;Readme&quot;,
+            description=&quot;Validates if the repository has a README.&quot;,
+            style=ExecutionStyle.Parallel,
+
+            # This is the template for the instructions to resolve
+            # a failure caused by this requirement.
+            resolution_template=textwrap.dedent(
+                &quot;&quot;&quot;\
+                Add a README file to the repository.
+                &quot;&quot;&quot;, ),
+
+            # This is the template for the rationale behind why this
+            # requirement is good to have.
+            rationale_template=textwrap.dedent(
+                &quot;&quot;&quot;\
+                A README file helps users understand the project.
+                &quot;&quot;&quot;, ),
+
+            # Flag which decides if an explicit include from the
+            # command line is requiremd to enable this requirement.
+            requires_explicit_include=False,
+        )
+
+        # The dynamic_arg_name is used in defining the dynamic
+        # argument `ReadmeCheck-no-Readme`.
+        self.dynamic_arg_name: str = &quot;no&quot;
+
+        # Flag deciding if the requirement is enabled by default.
+        self.enabled_by_default: bool = True
+
+    @override
+    def GetDynamicArgDefinitions(
+            self,
+            argument_separator: str) -&gt; dict[str, TypeDefinitionItemType]:
+        &quot;&quot;&quot;Get the definitions for the arguments to this requirement.&quot;&quot;&quot;
+
+        # Defines a dynamic argument `ReadmeCheck-no-Readme` which if enabled
+        # allows the requirement to pass if no README file is available.
+        return {
+            f&quot;{self.dynamic_arg_name}{argument_separator}{self.name}&quot;: (
+                bool,
+                typer.Option(
+                    default=False,
+                    help=&quot;Allow missing README.&quot;,
+                ),
+            ),
+        }
+
+    @override
+    def _EvaluateImpl(
+        self,
+        query_data: dict[str, Any],
+        requirement_args: dict[str, Any],
+    ) -&gt; Requirement.EvaluateImplResult:
+        &quot;&quot;&quot;Implementation of the reqiurement evaluation.
+
+        query_data: The data obtained from the query class (detailed next).
+        requirement_args: Reqiurement specific dynamic arguments.
+        &quot;&quot;&quot;
+
+        # Flag to enable check for the file.
+        check_for_existence: bool = self.enabled_by_default
+
+        # Check if the dynamic argument is provided,
+        # which toggles the check flag
+        if requirement_args.get(self.dynamic_arg_name, False):
+            check_for_existence = not check_for_existence
+
+        # If check flag is enabled, we perform the check.
+        # The repository directory is in `query_data[repo_dir]`
+        # thanks to the Query.py file.
+        if check_for_existence:
+
+            # Get full file path in temporary repo directory and
+            # check if it exists.
+            # This checks both upper case and lower case variants
+            full_file_path = Path(query_data[&quot;repo_dir&quot;].name) / &quot;README.md&quot;
+
+            # If the README file exists, return success.
+            if full_file_path.exists():
+                return Requirement.EvaluateImplResult(
+                    EvaluateResult.Success,
+                    &quot;README found inside the repository&quot;,
+                )
+
+            # Else return error.
+            return Requirement.EvaluateImplResult(
+                EvaluateResult.Error,
+                f&quot;No {self.filename} file found.&quot;,
+                provide_resolution=True,
+                provide_rationale=True,
+            )
+
+        # Requirement not enabled, so return DoesNotApply
+        return Requirement.EvaluateImplResult(EvaluateResult.DoesNotApply,
+                                              None)
+
+</code></pre>
+<h3 id="query">Query</h3>
+<p>The <code>Query.py</code> file has a class <code>ReadmeQuery</code> whose responsibility is to obtain the data needed by the requirement.
+Since multiple requirements may need ths same data, the <code>ReadmeQuery</code> runs once to obtain the data and passes it to all the requirements, thus reducing redundant operations.</p>
+<p><code>ReadmeQuery</code> needs to inherit from <code>Query</code> and implement 2 methods:</p>
+<ol>
+<li><code>__init__(self) -&gt; None</code>: The constructor.</li>
+<li><code>def GetData(self, module_data: dict[str, Any]) -&gt; Optional[dict[str, Any]]</code>: The method which performs the act of obtaining the necessary data.</li>
+</ol>
+<p>The <code>ReadmeQuery</code> file can thus be defined as:</p>
+<pre><code class="language-python">&quot;&quot;&quot;Contains the ReadmeQuery class.&quot;&quot;&quot;
+
+from tempfile import TemporaryDirectory
+from typing import Any, Optional
+
+from dbrownell_Common.Types import override  # type: ignore[import-untyped]
+from RepoAuditor.Query import ExecutionStyle, Query
+
+from ReadmeCheck.Requirement import ReadmeRequirement
+
+class ReadmeQuery(Query):
+    &quot;&quot;&quot;Query with requirements that operate on a repository directory.&quot;&quot;&quot;
+
+    # ----------------------------------------------------------------------
+    def __init__(self) -&gt; None:
+        super().__init__(
+            &quot;ReadmeQuery&quot;,
+            ExecutionStyle.Parallel,
+
+            # Note that we can specify multiple requirements here,
+            # all of which will get the same queried data.
+            [
+                ReadmeRequirement(),
+            ],
+        )
+
+    @override
+    def GetData(
+        self,
+        module_data: dict[str, Any],
+    ) -&gt; Optional[dict[str, Any]]:
+        &quot;&quot;&quot;Get the repository directory.&quot;&quot;&quot;
+
+        # Clone the git repository to a temp directory
+        branch = module_data.get(&quot;branch&quot;, &quot;main&quot;)
+        temp_repo_dir = TemporaryDirectory()
+        url = module_data[&quot;url&quot;]
+
+        # Import git.Repo here so that it is only imported
+        # if the plugin is requested.
+        from git import Repo
+
+        # Use the Repo class to clone the repository
+        Repo.clone_from(url, temp_repo_dir.name, branch=branch)
+
+        # Record the path and the temp directory for later cleanup
+        module_data[&quot;repo_dir&quot;] = temp_repo_dir
+
+        # This module_data is passed to each requirement as `query_data`.
+        return module_data
+
+</code></pre>
+<h3 id="module">Module</h3>
+<p>The <code>Module.py</code> file is the final file needed for implementing functionality.
+This file has a class which inherits from <code>Module</code> and sets up common dynamic arguments, such as the repository <code>url</code>, and the initial module data.</p>
+<p>We are required to implement 3 methods:</p>
+<ol>
+<li><code>__init__(self) -&gt; None</code>: The constructor.</li>
+<li><code>GetDynamicArgDefinitions(self) -&gt; dict[str, TypeDefinitionItemType]</code>: A method which defines module-level arguments which can be specified at runtime.</li>
+<li><code>GenerateInitialData(self, dynamic_args: dict[str, Any]) -&gt; Optional[dict[str, Any]]</code>: A method that executes before the data queries are made. Allows one to set up proper permissions and defaults.</li>
+</ol>
+<p>We define a class <code>ReadmeCheckModule</code> which implements these methods as</p>
+<pre><code class="language-python">&quot;&quot;&quot;Contains the ReadmeCheckModule object.&quot;&quot;&quot;
+
+from typing import Any, Optional
+
+import typer
+from dbrownell_Common.TyperEx import \
+    TypeDefinitionItemType  # type: ignore[import-untyped]
+from dbrownell_Common.Types import override  # type: ignore[import-untyped]
+from RepoAuditor.Module import ExecutionStyle, Module
+
+from ReadmeCheck.Query import ReadmeQuery
+
+
+class ReadmeCheckModule(Module):
+    &quot;&quot;&quot;Module for validating presence of a README file.&quot;&quot;&quot;
+
+    def __init__(self) -&gt; None:
+        super().__init__(
+            &quot;ReadmeCheck&quot;,
+            &quot;Validates presence of README file.&quot;,
+            ExecutionStyle.Parallel,
+
+            # This architecture allows us to specify multiple queries,
+            # each of which can run in parallel.
+            [
+                ReadmeQuery(),
+            ],
+            requires_explicit_include=True,
+        )
+
+    @override
+    def GetDynamicArgDefinitions(self) -&gt; dict[str, TypeDefinitionItemType]:
+        &quot;&quot;&quot;Get the definitions for the arguments to this requirement.&quot;&quot;&quot;
+        # Here we define the URL which is used to get the repository data.
+        return {
+            &quot;url&quot;: (
+                str,
+                typer.Option(
+                    ...,
+                    help=
+                    &quot;[REQUIRED] Github URL (e.g. https://github.com/gt-sse-center/RepoAuditor)&quot;,
+                ),
+            ),
+        }
+
+    @override
+    def GenerateInitialData(
+            self, dynamic_args: dict[str, Any]) -&gt; Optional[dict[str, Any]]:
+        &quot;&quot;&quot;Generate the initial data to be used in the `dynamic_args`, such as session info, etc.&quot;&quot;&quot;
+        # Nothing to do so we just return the dynamic_args.
+        # In alternative cases, we can set up things like
+        # the GitHub personal access token here.
+        return dynamic_args
+
+</code></pre>
+<h3 id="pluginpy">Plugin.py</h3>
+<p>This is the easiest file, and has the code which tells <code>pluggy</code> how to load our custom plugin into <code>RepoAuditor</code>.</p>
+<pre><code class="language-python">&quot;&quot;&quot;Contains Plugin functionality.&quot;&quot;&quot;
+
+import pluggy
+from RepoAuditor import APP_NAME
+from RepoAuditor.Module import Module
+
+from ReadmeCheck.Module import ReadmeCheckModule
+
+
+@pluggy.HookimplMarker(APP_NAME)
+def GetModule() -&gt; Module:
+    &quot;&quot;&quot;Return ReadMeCheck Module.&quot;&quot;&quot;
+    return ReadmeCheckModule()
+</code></pre>
+<p>Here, we simply load the app name from <code>RepoAuditor</code> as <code>APP_NAME</code> and implement a <code>GetModule</code> function with the <code>@pluggy.HookimplMarker</code> decorator.</p>
+<p>All the <code>GetModule</code> function has to do is return the appropriate module, a.k.a. <code>ReadmeCheckModule()</code>.</p>
+<h2 id="running-the-plugin">Running the Plugin</h2>
+<p>At this point, we are ready to execute our custom plugin.</p>
+<p>We start by installing it:</p>
+<pre><code class="language-sh">uv pip install -e .
+</code></pre>
+<p>After this, we simply call <code>RepoAuditor</code> and specify our custom module in the <code>--include</code> flag.</p>
+<pre><code class="language-sh">uv run repoauditor --include ReadmeCheck --ReadmeCheck-url https://github.com/varunagrawal/RepoAuditor
+</code></pre>
+<p>You should see the output:</p>
+<pre><code class="language-sh">╭──────────────────────────────── ReadmeCheck ─────────────────────────────────╮
+│                                                                              │
+│ Validates presence of README file.                                           │
+│                                                                              │
+│                                                                              │
+│ Successful:     1 (100.00%)                                                  │
+│ Warnings:       0 (0.00%)                                                    │
+│ Errors:         0 (0.00%)                                                    │
+│ Skipped:        0 (0.00%)                                                    │
+│                                                                              │
+│ ╭─ Metrics ────────────────────────────────────────────────────────────────╮ │
+│ │                                                                          │ │
+│ │                                                                          │ │
+│ │ Successful:     1 (100.00%)                                              │ │
+│ │ Warnings:       0 (0.00%)                                                │ │
+│ │ Errors:         0 (0.00%)                                                │ │
+│ │ Skipped:        0 (0.00%)                                                │ │
+│ │                                                                          │ │
+│ ╰──────────────────────────────────────────────────────────────────────────╯ │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+</code></pre>
+<p>This indicates that our plugin was successfully loaded and executed by <code>RepoAuditor</code>.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>In this tutorial, we learned how to write a custom plugin for <code>RepoAuditor</code>, and all the necessary modules and classes we need to implement our plugin.</p>
+<p>While the plugin detailed here performs a very basic check for the README file, the tutorial demonstrated the steps needed to get started. Actual functionality can be customized as per the needs of an application or organization, and <code>RepoAuditor</code> can efficiently execute the plugin.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.50899def.min.js"></script>
+      
+        <script src="../termynal.js"></script>
+      
+    
+  </body>
+</html>
