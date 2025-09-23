@@ -494,24 +494,24 @@
 <h1 id="usage">Usage</h1>
 <h2 id="basic-use">Basic Use</h2>
 <p>With a generated PAT file, you can now run <code>RepoAuditor</code> on your GitHub repository.</p>
-<pre><code class="language-sh">uvx repoauditor --include GitHub \
-  --GitHub-url &lt;url-to-repo&gt; \
-  --GitHub-pat ~/PAT.txt
-</code></pre>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>uvx<span class="w"> </span>repoauditor<span class="w"> </span>--include<span class="w"> </span>GitHub<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span>--GitHub-url<span class="w"> </span>&lt;url-to-repo&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span>--GitHub-pat<span class="w"> </span>~/PAT.txt
+</span></code></pre></div>
 <p>If your repository is on an enterprise server, you can similarly generate a PAT (and save it <code>enterprise_PAT.txt</code>) and point <code>RepoAuditor</code> to the corresponding repo:</p>
-<pre><code class="language-sh">uvx repoauditor --include GitHub \
-  --GitHub-url &lt;url-to-enterprise-repo&gt; \
-  --GitHub-pat ~/enterprise_PAT.txt
-</code></pre>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>uvx<span class="w"> </span>repoauditor<span class="w"> </span>--include<span class="w"> </span>GitHub<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span>--GitHub-url<span class="w"> </span>&lt;url-to-enterprise-repo&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span>--GitHub-pat<span class="w"> </span>~/enterprise_PAT.txt
+</span></code></pre></div>
 <p>As a general example, we will use the <a href="https://github.com/dbarnett/python-helloworld">python-helloworld</a> repository.</p>
 <blockquote>
 <p><strong>NOTE</strong> You need to fork the repository since your default PAT only has access to repos under your account.</p>
 </blockquote>
 <p>To run <code>RepoAuditor</code>, we can enter the following in the command-line:</p>
-<pre><code class="language-sh">uvx repoauditor --include GitHub \
-  --GitHub-url https://github.com/&lt;username&gt;/python-helloworld \
-  --GitHub-pat ~/PAT.txt
-</code></pre>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>uvx<span class="w"> </span>repoauditor<span class="w"> </span>--include<span class="w"> </span>GitHub<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span>--GitHub-url<span class="w"> </span>https://github.com/&lt;username&gt;/python-helloworld<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span>--GitHub-pat<span class="w"> </span>~/PAT.txt
+</span></code></pre></div>
 <p><code>RepoAuditor</code> will generate a series of messages describing all the issues in the repository, along with the rationale behind them and the steps for resolution.</p>
 <p><br/></p>
 <h2 id="custom-settings">Custom Settings</h2>
@@ -529,26 +529,26 @@ You can override the default settings by specifying the appropriate flag.</p>
 <p>In this section, we will look at various exampls of using <code>RepoAuditor</code>. For the sake of brevity, we will omit the <code>--include</code> and <code>--GitHub-url</code> flags, leaving the inclusion to the user.</p>
 <p><code>RepoAuditor</code> is designed to have sensible defaults which represent industry best practices.
 For example, <code>RepoAuditor</code> by default checks that the setting <code>Allow rebase merging</code> is off. However, if you wish to check that this setting is turned on, you can run:</p>
-<pre><code class="language-sh">uvx repoauditor --GitHub-RebaseMergeCommit
-</code></pre>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>uvx<span class="w"> </span>repoauditor<span class="w"> </span>--GitHub-RebaseMergeCommit
+</span></code></pre></div>
 <p>Similarly, <code>RepoAuditor</code> checks if <code>Issues</code> are enabled. You can set <code>RepoAuditor</code> to check if <code>Issues</code> is disabled by specifying</p>
-<pre><code class="language-sh">uvx repoauditor --GitHub-no-SupportIssues
-</code></pre>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>uvx<span class="w"> </span>repoauditor<span class="w"> </span>--GitHub-no-SupportIssues
+</span></code></pre></div>
 <p>Finally, <code>RepoAuditor</code> by default enforces that the <code>MIT License</code> exists for the repository. If your organization requires another license (such as <code>GPL</code>), you can enforce that by specifying the license keyword such as:</p>
-<pre><code class="language-sh">uvx repoauditor --GitHub-License-value &quot;GNU General Public License v2.0&quot;
-</code></pre>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>uvx<span class="w"> </span>repoauditor<span class="w"> </span>--GitHub-License-value<span class="w"> </span><span class="s2">&quot;GNU General Public License v2.0&quot;</span>
+</span></code></pre></div>
 <p>The types of licenses supported by GitHub can be found <a href="https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository#searching-github-by-license-type">here</a>. Be sure to specify the full license name, e.g. <code>GNU General Public License v2.0</code>.</p>
 <p><br/></p>
 <h2 id="excluding-requirements">Excluding Requirements</h2>
 <p>There is often the case you might wish to exclude a module or a specific requirement.
 <code>RepoAuditor</code> has built-in support for this as well, by using the <code>--exclude</code> flag.</p>
 <p>To exclude a requirement, you can run specify the requirement as <code>Module-Requirement</code></p>
-<pre><code class="language-sh">uvx repoauditor --include GitHub --exclude GitHub-RequireSignedCommitsRule
-</code></pre>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>uvx<span class="w"> </span>repoauditor<span class="w"> </span>--include<span class="w"> </span>GitHub<span class="w"> </span>--exclude<span class="w"> </span>GitHub-RequireSignedCommitsRule
+</span></code></pre></div>
 <p>The above command includes all of the requirements in the <code>GitHub</code> module except for the <code>RequireSignedCommitsRule</code> requirement.</p>
 <p>You can similarly exclude a whole module:</p>
-<pre><code class="language-sh">uvx repoauditor --include GitHub --exclude CommunityStandards
-</code></pre>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>uvx<span class="w"> </span>repoauditor<span class="w"> </span>--include<span class="w"> </span>GitHub<span class="w"> </span>--exclude<span class="w"> </span>CommunityStandards
+</span></code></pre></div>
 <p>NOTE: This way of excluding a module is redundant since any module not added via <code>--include</code> is automatically excluded.</p>
 
 

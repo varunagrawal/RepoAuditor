@@ -350,9 +350,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#pluginpy" class="md-nav__link">
+  <a href="#plugin" class="md-nav__link">
     <span class="md-ellipsis">
-      Plugin.py
+      Plugin
     </span>
   </a>
   
@@ -528,9 +528,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#pluginpy" class="md-nav__link">
+  <a href="#plugin" class="md-nav__link">
     <span class="md-ellipsis">
-      Plugin.py
+      Plugin
     </span>
   </a>
   
@@ -582,44 +582,44 @@
 <p>To setup, create a new repository. We will call ours <code>ReadmeCheck</code> and we will use it to check if a repository has a <code>README.md</code> file.
 We know this is is a bit redundant but it lays the groundwork for this tutorial.</p>
 <p>Follow the below commands to setup the basic skeleton project.</p>
-<div class="termy" data-termynal data-ty-macos data-ty-title="bash"><span data-ty>mkdir ReadmeCheck &amp;&amp; cd ReadmeCheck<br>touch pyproject.toml<br>touch README.md<br>mkdir ReadmeCheck<br>touch ReadmeCheck/__init__.py<br></span></div>
+<div class="termy" data-termynal data-ty-macos data-ty-title="bash"><span data-ty="input" data-ty-prompt="$">mkdir ReadmeCheck &amp;&amp; cd ReadmeCheck</span><span data-ty="input" data-ty-prompt="$">touch pyproject.toml README.md</span><span data-ty="input" data-ty-prompt="$">mkdir ReadmeCheck</span><span data-ty="input" data-ty-prompt="$">touch ReadmeCheck/__init__.py</span><span data-ty></span></div>
 
 <p>We first start off by creating a very simple <code>pyproject.toml</code> file.</p>
-<pre><code class="language-toml">[project]
-name = &quot;ReadmeCheck&quot;
-description = &quot;Custom plugin tutorial for RepoAuditor&quot;
-readme = &quot;README.md&quot;
-authors = [
-    { name = &quot;Scientific Software Engineering Center at Georgia Tech&quot;, email = &quot;sse-center@gatech.edu&quot; },
-]
-requires-python = &quot;&gt;= 3.10&quot;
-dependencies = [
-    &quot;dbrownell-common&gt;=0.16.0&quot;,
-    &quot;gitpython&gt;=3.1.44&quot;,
-    &quot;RepoAuditor&gt;=0.4.4&quot;,
-]
-version = &quot;0.0.0&quot;
-classifiers = [
-    &quot;Operating System :: MacOS&quot;,
-    &quot;Operating System :: Microsoft :: Windows&quot;,
-    &quot;Operating System :: POSIX :: Linux&quot;,
-    &quot;Programming Language :: Python&quot;,
-    &quot;Programming Language :: Python :: 3.13&quot;,
-    &quot;Programming Language :: Python :: 3.12&quot;,
-    &quot;Programming Language :: Python :: 3.11&quot;,
-    &quot;Programming Language :: Python :: 3.10&quot;,
-]
-
-[project.license]
-text = &quot;MIT&quot;
-
-[project.entry-points.RepoAuditor]
-ReadmCheckPlugin = &quot;ReadmeCheck.Plugin&quot;
-
-[build-system]
-requires = [&quot;hatchling&quot;]
-build-backend = &quot;hatchling.build&quot;
-</code></pre>
+<div class="language-toml highlight"><span class="filename">pyproject.toml</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">[project]</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ReadmeCheck&quot;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Custom plugin tutorial for RepoAuditor&quot;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">readme</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;README.md&quot;</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">authors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;Scientific Software Engineering Center at Georgia Tech&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;sse-center@gatech.edu&quot;</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">]</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">requires-python</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&gt;= 3.10&quot;</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="n">dependencies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="s2">&quot;dbrownell-common&gt;=0.16.0&quot;</span><span class="p">,</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="s2">&quot;gitpython&gt;=3.1.44&quot;</span><span class="p">,</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="s2">&quot;RepoAuditor&gt;=0.4.4&quot;</span><span class="p">,</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="p">]</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;0.0.0&quot;</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="n">classifiers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span><span class="s2">&quot;Operating System :: MacOS&quot;</span><span class="p">,</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">    </span><span class="s2">&quot;Operating System :: Microsoft :: Windows&quot;</span><span class="p">,</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span><span class="s2">&quot;Operating System :: POSIX :: Linux&quot;</span><span class="p">,</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">    </span><span class="s2">&quot;Programming Language :: Python&quot;</span><span class="p">,</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">    </span><span class="s2">&quot;Programming Language :: Python :: 3.13&quot;</span><span class="p">,</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">    </span><span class="s2">&quot;Programming Language :: Python :: 3.12&quot;</span><span class="p">,</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">    </span><span class="s2">&quot;Programming Language :: Python :: 3.11&quot;</span><span class="p">,</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">    </span><span class="s2">&quot;Programming Language :: Python :: 3.10&quot;</span><span class="p">,</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="p">]</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="k">[project.license]</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;MIT&quot;</span>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="k">[project.entry-points.RepoAuditor]</span>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="n">ReadmCheckPlugin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ReadmeCheck.Plugin&quot;</span>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="k">[build-system]</span>
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="n">requires</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;hatchling&quot;</span><span class="p">]</span>
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="n">build-backend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;hatchling.build&quot;</span>
+</span></code></pre></div>
 <h2 id="plugin-components">Plugin Components</h2>
 <p>For any RepoAuditor plugin, we need 4 files:</p>
 <ol>
@@ -629,14 +629,17 @@ build-backend = &quot;hatchling.build&quot;
 <li><code>Plugin.py</code>: Tells <code>pluggy</code> how to load the plugin so RepoAuditor can see it.</li>
 </ol>
 <p>The files would be organized as:</p>
-<pre><code class="language-sh">- README.md
-- pyproject.toml
-- ReadmeCheck
- | - Requirement.py
- | - Query.py
- | - Module.py
- | - Plugin.py
-</code></pre>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>$<span class="w"> </span>tree
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>.
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>├──<span class="w"> </span>README.md
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>├──<span class="w"> </span>ReadmeCheck
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>│<span class="w">   </span>├──<span class="w"> </span>Module.py
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>│<span class="w">   </span>├──<span class="w"> </span>Plugin.py
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>│<span class="w">   </span>├──<span class="w"> </span>Query.py
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>│<span class="w">   </span>├──<span class="w"> </span>Requirement.py
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>│<span class="w">   </span>└──<span class="w"> </span>__init__.py
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>└──<span class="w"> </span>pyproject.toml
+</span></code></pre></div>
 <h3 id="requirement">Requirement</h3>
 <p>To define a requirement, we define a class which inherits from <code>Requirement</code> and implements three methods:</p>
 <ol>
@@ -645,122 +648,121 @@ build-backend = &quot;hatchling.build&quot;
 <li><code>_EvaluateImpl(self, query_data: dict[str, Any], requirement_args: dict[str, Any], ) -&gt; Requirement.EvaluateImplResult</code>: The logic for verifying the requirement.</li>
 </ol>
 <p>The definition for the <code>Requirement.py</code> file would be the following. Please see the inline comments for details about specific lines of code.</p>
-<pre><code class="language-python">&quot;&quot;&quot;Contains the Readme object.&quot;&quot;&quot;
-
-import textwrap
-from pathlib import Path
-from typing import Any
-
-import typer
-from dbrownell_Common.TyperEx import \
-    TypeDefinitionItemType  # type: ignore[import-untyped]
-from dbrownell_Common.Types import override  # type: ignore[import-untyped]
-from RepoAuditor.Requirement import EvaluateResult, ExecutionStyle, Requirement
-
-
-class ReadmeRequirement(Requirement):
-    &quot;&quot;&quot;Requirement to validate a repository's README.&quot;&quot;&quot;
-
-    def __init__(self) -&gt; None:
-        super().__init__(
-            name=&quot;Readme&quot;,
-            description=&quot;Validates if the repository has a README.&quot;,
-            style=ExecutionStyle.Parallel,
-
-            # This is the template for the instructions to resolve
-            # a failure caused by this requirement.
-            resolution_template=textwrap.dedent(
-                &quot;&quot;&quot;\
-                Add a README file to the repository.
-                &quot;&quot;&quot;, ),
-
-            # This is the template for the rationale behind why this
-            # requirement is good to have.
-            rationale_template=textwrap.dedent(
-                &quot;&quot;&quot;\
-                A README file helps users understand the project.
-                &quot;&quot;&quot;, ),
-
-            # Flag which decides if an explicit include from the
-            # command line is requiremd to enable this requirement.
-            requires_explicit_include=False,
-        )
-
-        # The dynamic_arg_name is used in defining the dynamic
-        # argument `ReadmeCheck-no-Readme`.
-        self.dynamic_arg_name: str = &quot;no&quot;
-
-        # Flag deciding if the requirement is enabled by default.
-        self.enabled_by_default: bool = True
-
-    @override
-    def GetDynamicArgDefinitions(
-            self,
-            argument_separator: str) -&gt; dict[str, TypeDefinitionItemType]:
-        &quot;&quot;&quot;Get the definitions for the arguments to this requirement.&quot;&quot;&quot;
-
-        # Defines a dynamic argument `ReadmeCheck-no-Readme` which if enabled
-        # allows the requirement to pass if no README file is available.
-        return {
-            f&quot;{self.dynamic_arg_name}{argument_separator}{self.name}&quot;: (
-                bool,
-                typer.Option(
-                    default=False,
-                    help=&quot;Allow missing README.&quot;,
-                ),
-            ),
-        }
-
-    @override
-    def _EvaluateImpl(
-        self,
-        query_data: dict[str, Any],
-        requirement_args: dict[str, Any],
-    ) -&gt; Requirement.EvaluateImplResult:
-        &quot;&quot;&quot;Implementation of the reqiurement evaluation.
-
-        query_data: The data obtained from the query class (detailed next).
-        requirement_args: Reqiurement specific dynamic arguments.
-        &quot;&quot;&quot;
-
-        # Flag to enable check for the file.
-        check_for_existence: bool = self.enabled_by_default
-
-        # Check if the dynamic argument is provided,
-        # which toggles the check flag
-        if requirement_args.get(self.dynamic_arg_name, False):
-            check_for_existence = not check_for_existence
-
-        # If check flag is enabled, we perform the check.
-        # The repository directory is in `query_data[repo_dir]`
-        # thanks to the Query.py file.
-        if check_for_existence:
-
-            # Get full file path in temporary repo directory and
-            # check if it exists.
-            # This checks both upper case and lower case variants
-            full_file_path = Path(query_data[&quot;repo_dir&quot;].name) / &quot;README.md&quot;
-
-            # If the README file exists, return success.
-            if full_file_path.exists():
-                return Requirement.EvaluateImplResult(
-                    EvaluateResult.Success,
-                    &quot;README found inside the repository&quot;,
-                )
-
-            # Else return error.
-            return Requirement.EvaluateImplResult(
-                EvaluateResult.Error,
-                f&quot;No {self.filename} file found.&quot;,
-                provide_resolution=True,
-                provide_rationale=True,
-            )
-
-        # Requirement not enabled, so return DoesNotApply
-        return Requirement.EvaluateImplResult(EvaluateResult.DoesNotApply,
-                                              None)
-
-</code></pre>
+<div class="language-python highlight"><span class="filename">ReadmeCheck/Requirement.py</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="sd">&quot;&quot;&quot;Contains the Readme object.&quot;&quot;&quot;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">textwrap</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="kn">import</span><span class="w"> </span><span class="nn">typer</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="kn">from</span><span class="w"> </span><span class="nn">dbrownell_Common.TyperEx</span><span class="w"> </span><span class="kn">import</span> \
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="n">TypeDefinitionItemType</span>  <span class="c1"># type: ignore[import-untyped]</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="kn">from</span><span class="w"> </span><span class="nn">dbrownell_Common.Types</span><span class="w"> </span><span class="kn">import</span> <span class="n">override</span>  <span class="c1"># type: ignore[import-untyped]</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="kn">from</span><span class="w"> </span><span class="nn">RepoAuditor.Requirement</span><span class="w"> </span><span class="kn">import</span> <span class="n">EvaluateResult</span><span class="p">,</span> <span class="n">ExecutionStyle</span><span class="p">,</span> <span class="n">Requirement</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="k">class</span><span class="w"> </span><span class="nc">ReadmeRequirement</span><span class="p">(</span><span class="n">Requirement</span><span class="p">):</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Requirement to validate a repository&#39;s README.&quot;&quot;&quot;</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Readme&quot;</span><span class="p">,</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>            <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Validates if the repository has a README.&quot;</span><span class="p">,</span>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>            <span class="n">style</span><span class="o">=</span><span class="n">ExecutionStyle</span><span class="o">.</span><span class="n">Parallel</span><span class="p">,</span>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>            <span class="c1"># This is the template for the instructions to resolve</span>
+</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>            <span class="c1"># a failure caused by this requirement.</span>
+</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>            <span class="n">resolution_template</span><span class="o">=</span><span class="n">textwrap</span><span class="o">.</span><span class="n">dedent</span><span class="p">(</span>
+</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="w">                </span><span class="sd">&quot;&quot;&quot;\</span>
+</span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="sd">                Add a README file to the repository.</span>
+</span><span id="__span-2-28"><a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="sd">                &quot;&quot;&quot;</span><span class="p">,</span> <span class="p">),</span>
+</span><span id="__span-2-29"><a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a>
+</span><span id="__span-2-30"><a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a>            <span class="c1"># This is the template for the rationale behind why this</span>
+</span><span id="__span-2-31"><a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a>            <span class="c1"># requirement is good to have.</span>
+</span><span id="__span-2-32"><a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a>            <span class="n">rationale_template</span><span class="o">=</span><span class="n">textwrap</span><span class="o">.</span><span class="n">dedent</span><span class="p">(</span>
+</span><span id="__span-2-33"><a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="w">                </span><span class="sd">&quot;&quot;&quot;\</span>
+</span><span id="__span-2-34"><a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="sd">                A README file helps users understand the project.</span>
+</span><span id="__span-2-35"><a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a><span class="sd">                &quot;&quot;&quot;</span><span class="p">,</span> <span class="p">),</span>
+</span><span id="__span-2-36"><a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a>
+</span><span id="__span-2-37"><a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a>            <span class="c1"># Flag which decides if an explicit include from the</span>
+</span><span id="__span-2-38"><a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a>            <span class="c1"># command line is requiremd to enable this requirement.</span>
+</span><span id="__span-2-39"><a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a>            <span class="n">requires_explicit_include</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+</span><span id="__span-2-40"><a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a>        <span class="p">)</span>
+</span><span id="__span-2-41"><a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a>
+</span><span id="__span-2-42"><a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a>        <span class="c1"># The dynamic_arg_name is used in defining the dynamic</span>
+</span><span id="__span-2-43"><a id="__codelineno-2-43" name="__codelineno-2-43" href="#__codelineno-2-43"></a>        <span class="c1"># argument `ReadmeCheck-no-Readme`.</span>
+</span><span id="__span-2-44"><a id="__codelineno-2-44" name="__codelineno-2-44" href="#__codelineno-2-44"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">dynamic_arg_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;no&quot;</span>
+</span><span id="__span-2-45"><a id="__codelineno-2-45" name="__codelineno-2-45" href="#__codelineno-2-45"></a>
+</span><span id="__span-2-46"><a id="__codelineno-2-46" name="__codelineno-2-46" href="#__codelineno-2-46"></a>        <span class="c1"># Flag deciding if the requirement is enabled by default.</span>
+</span><span id="__span-2-47"><a id="__codelineno-2-47" name="__codelineno-2-47" href="#__codelineno-2-47"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">enabled_by_default</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+</span><span id="__span-2-48"><a id="__codelineno-2-48" name="__codelineno-2-48" href="#__codelineno-2-48"></a>
+</span><span id="__span-2-49"><a id="__codelineno-2-49" name="__codelineno-2-49" href="#__codelineno-2-49"></a>    <span class="nd">@override</span>
+</span><span id="__span-2-50"><a id="__codelineno-2-50" name="__codelineno-2-50" href="#__codelineno-2-50"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">GetDynamicArgDefinitions</span><span class="p">(</span>
+</span><span id="__span-2-51"><a id="__codelineno-2-51" name="__codelineno-2-51" href="#__codelineno-2-51"></a>            <span class="bp">self</span><span class="p">,</span>
+</span><span id="__span-2-52"><a id="__codelineno-2-52" name="__codelineno-2-52" href="#__codelineno-2-52"></a>            <span class="n">argument_separator</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">TypeDefinitionItemType</span><span class="p">]:</span>
+</span><span id="__span-2-53"><a id="__codelineno-2-53" name="__codelineno-2-53" href="#__codelineno-2-53"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the definitions for the arguments to this requirement.&quot;&quot;&quot;</span>
+</span><span id="__span-2-54"><a id="__codelineno-2-54" name="__codelineno-2-54" href="#__codelineno-2-54"></a>
+</span><span id="__span-2-55"><a id="__codelineno-2-55" name="__codelineno-2-55" href="#__codelineno-2-55"></a>        <span class="c1"># Defines a dynamic argument `ReadmeCheck-no-Readme` which if enabled</span>
+</span><span id="__span-2-56"><a id="__codelineno-2-56" name="__codelineno-2-56" href="#__codelineno-2-56"></a>        <span class="c1"># allows the requirement to pass if no README file is available.</span>
+</span><span id="__span-2-57"><a id="__codelineno-2-57" name="__codelineno-2-57" href="#__codelineno-2-57"></a>        <span class="k">return</span> <span class="p">{</span>
+</span><span id="__span-2-58"><a id="__codelineno-2-58" name="__codelineno-2-58" href="#__codelineno-2-58"></a>            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">dynamic_arg_name</span><span class="si">}{</span><span class="n">argument_separator</span><span class="si">}{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">:</span> <span class="p">(</span>
+</span><span id="__span-2-59"><a id="__codelineno-2-59" name="__codelineno-2-59" href="#__codelineno-2-59"></a>                <span class="nb">bool</span><span class="p">,</span>
+</span><span id="__span-2-60"><a id="__codelineno-2-60" name="__codelineno-2-60" href="#__codelineno-2-60"></a>                <span class="n">typer</span><span class="o">.</span><span class="n">Option</span><span class="p">(</span>
+</span><span id="__span-2-61"><a id="__codelineno-2-61" name="__codelineno-2-61" href="#__codelineno-2-61"></a>                    <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+</span><span id="__span-2-62"><a id="__codelineno-2-62" name="__codelineno-2-62" href="#__codelineno-2-62"></a>                    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Allow missing README.&quot;</span><span class="p">,</span>
+</span><span id="__span-2-63"><a id="__codelineno-2-63" name="__codelineno-2-63" href="#__codelineno-2-63"></a>                <span class="p">),</span>
+</span><span id="__span-2-64"><a id="__codelineno-2-64" name="__codelineno-2-64" href="#__codelineno-2-64"></a>            <span class="p">),</span>
+</span><span id="__span-2-65"><a id="__codelineno-2-65" name="__codelineno-2-65" href="#__codelineno-2-65"></a>        <span class="p">}</span>
+</span><span id="__span-2-66"><a id="__codelineno-2-66" name="__codelineno-2-66" href="#__codelineno-2-66"></a>
+</span><span id="__span-2-67"><a id="__codelineno-2-67" name="__codelineno-2-67" href="#__codelineno-2-67"></a>    <span class="nd">@override</span>
+</span><span id="__span-2-68"><a id="__codelineno-2-68" name="__codelineno-2-68" href="#__codelineno-2-68"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">_EvaluateImpl</span><span class="p">(</span>
+</span><span id="__span-2-69"><a id="__codelineno-2-69" name="__codelineno-2-69" href="#__codelineno-2-69"></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="__span-2-70"><a id="__codelineno-2-70" name="__codelineno-2-70" href="#__codelineno-2-70"></a>        <span class="n">query_data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
+</span><span id="__span-2-71"><a id="__codelineno-2-71" name="__codelineno-2-71" href="#__codelineno-2-71"></a>        <span class="n">requirement_args</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
+</span><span id="__span-2-72"><a id="__codelineno-2-72" name="__codelineno-2-72" href="#__codelineno-2-72"></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Requirement</span><span class="o">.</span><span class="n">EvaluateImplResult</span><span class="p">:</span>
+</span><span id="__span-2-73"><a id="__codelineno-2-73" name="__codelineno-2-73" href="#__codelineno-2-73"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Implementation of the reqiurement evaluation.</span>
+</span><span id="__span-2-74"><a id="__codelineno-2-74" name="__codelineno-2-74" href="#__codelineno-2-74"></a>
+</span><span id="__span-2-75"><a id="__codelineno-2-75" name="__codelineno-2-75" href="#__codelineno-2-75"></a><span class="sd">        query_data: The data obtained from the query class (detailed next).</span>
+</span><span id="__span-2-76"><a id="__codelineno-2-76" name="__codelineno-2-76" href="#__codelineno-2-76"></a><span class="sd">        requirement_args: Reqiurement specific dynamic arguments.</span>
+</span><span id="__span-2-77"><a id="__codelineno-2-77" name="__codelineno-2-77" href="#__codelineno-2-77"></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="__span-2-78"><a id="__codelineno-2-78" name="__codelineno-2-78" href="#__codelineno-2-78"></a>
+</span><span id="__span-2-79"><a id="__codelineno-2-79" name="__codelineno-2-79" href="#__codelineno-2-79"></a>        <span class="c1"># Flag to enable check for the file.</span>
+</span><span id="__span-2-80"><a id="__codelineno-2-80" name="__codelineno-2-80" href="#__codelineno-2-80"></a>        <span class="n">check_for_existence</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">enabled_by_default</span>
+</span><span id="__span-2-81"><a id="__codelineno-2-81" name="__codelineno-2-81" href="#__codelineno-2-81"></a>
+</span><span id="__span-2-82"><a id="__codelineno-2-82" name="__codelineno-2-82" href="#__codelineno-2-82"></a>        <span class="c1"># Check if the dynamic argument is provided,</span>
+</span><span id="__span-2-83"><a id="__codelineno-2-83" name="__codelineno-2-83" href="#__codelineno-2-83"></a>        <span class="c1"># which toggles the check flag</span>
+</span><span id="__span-2-84"><a id="__codelineno-2-84" name="__codelineno-2-84" href="#__codelineno-2-84"></a>        <span class="k">if</span> <span class="n">requirement_args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dynamic_arg_name</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+</span><span id="__span-2-85"><a id="__codelineno-2-85" name="__codelineno-2-85" href="#__codelineno-2-85"></a>            <span class="n">check_for_existence</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">check_for_existence</span>
+</span><span id="__span-2-86"><a id="__codelineno-2-86" name="__codelineno-2-86" href="#__codelineno-2-86"></a>
+</span><span id="__span-2-87"><a id="__codelineno-2-87" name="__codelineno-2-87" href="#__codelineno-2-87"></a>        <span class="c1"># If check flag is enabled, we perform the check.</span>
+</span><span id="__span-2-88"><a id="__codelineno-2-88" name="__codelineno-2-88" href="#__codelineno-2-88"></a>        <span class="c1"># The repository directory is in `query_data[repo_dir]`</span>
+</span><span id="__span-2-89"><a id="__codelineno-2-89" name="__codelineno-2-89" href="#__codelineno-2-89"></a>        <span class="c1"># thanks to the Query.py file.</span>
+</span><span id="__span-2-90"><a id="__codelineno-2-90" name="__codelineno-2-90" href="#__codelineno-2-90"></a>        <span class="k">if</span> <span class="n">check_for_existence</span><span class="p">:</span>
+</span><span id="__span-2-91"><a id="__codelineno-2-91" name="__codelineno-2-91" href="#__codelineno-2-91"></a>
+</span><span id="__span-2-92"><a id="__codelineno-2-92" name="__codelineno-2-92" href="#__codelineno-2-92"></a>            <span class="c1"># Get full file path in temporary repo directory and</span>
+</span><span id="__span-2-93"><a id="__codelineno-2-93" name="__codelineno-2-93" href="#__codelineno-2-93"></a>            <span class="c1"># check if it exists.</span>
+</span><span id="__span-2-94"><a id="__codelineno-2-94" name="__codelineno-2-94" href="#__codelineno-2-94"></a>            <span class="c1"># This checks both upper case and lower case variants</span>
+</span><span id="__span-2-95"><a id="__codelineno-2-95" name="__codelineno-2-95" href="#__codelineno-2-95"></a>            <span class="n">full_file_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">query_data</span><span class="p">[</span><span class="s2">&quot;repo_dir&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;README.md&quot;</span>
+</span><span id="__span-2-96"><a id="__codelineno-2-96" name="__codelineno-2-96" href="#__codelineno-2-96"></a>
+</span><span id="__span-2-97"><a id="__codelineno-2-97" name="__codelineno-2-97" href="#__codelineno-2-97"></a>            <span class="c1"># If the README file exists, return success.</span>
+</span><span id="__span-2-98"><a id="__codelineno-2-98" name="__codelineno-2-98" href="#__codelineno-2-98"></a>            <span class="k">if</span> <span class="n">full_file_path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+</span><span id="__span-2-99"><a id="__codelineno-2-99" name="__codelineno-2-99" href="#__codelineno-2-99"></a>                <span class="k">return</span> <span class="n">Requirement</span><span class="o">.</span><span class="n">EvaluateImplResult</span><span class="p">(</span>
+</span><span id="__span-2-100"><a id="__codelineno-2-100" name="__codelineno-2-100" href="#__codelineno-2-100"></a>                    <span class="n">EvaluateResult</span><span class="o">.</span><span class="n">Success</span><span class="p">,</span>
+</span><span id="__span-2-101"><a id="__codelineno-2-101" name="__codelineno-2-101" href="#__codelineno-2-101"></a>                    <span class="s2">&quot;README found inside the repository&quot;</span><span class="p">,</span>
+</span><span id="__span-2-102"><a id="__codelineno-2-102" name="__codelineno-2-102" href="#__codelineno-2-102"></a>                <span class="p">)</span>
+</span><span id="__span-2-103"><a id="__codelineno-2-103" name="__codelineno-2-103" href="#__codelineno-2-103"></a>
+</span><span id="__span-2-104"><a id="__codelineno-2-104" name="__codelineno-2-104" href="#__codelineno-2-104"></a>            <span class="c1"># Else return error.</span>
+</span><span id="__span-2-105"><a id="__codelineno-2-105" name="__codelineno-2-105" href="#__codelineno-2-105"></a>            <span class="k">return</span> <span class="n">Requirement</span><span class="o">.</span><span class="n">EvaluateImplResult</span><span class="p">(</span>
+</span><span id="__span-2-106"><a id="__codelineno-2-106" name="__codelineno-2-106" href="#__codelineno-2-106"></a>                <span class="n">EvaluateResult</span><span class="o">.</span><span class="n">Error</span><span class="p">,</span>
+</span><span id="__span-2-107"><a id="__codelineno-2-107" name="__codelineno-2-107" href="#__codelineno-2-107"></a>                <span class="sa">f</span><span class="s2">&quot;No </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="si">}</span><span class="s2"> file found.&quot;</span><span class="p">,</span>
+</span><span id="__span-2-108"><a id="__codelineno-2-108" name="__codelineno-2-108" href="#__codelineno-2-108"></a>                <span class="n">provide_resolution</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span id="__span-2-109"><a id="__codelineno-2-109" name="__codelineno-2-109" href="#__codelineno-2-109"></a>                <span class="n">provide_rationale</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span id="__span-2-110"><a id="__codelineno-2-110" name="__codelineno-2-110" href="#__codelineno-2-110"></a>            <span class="p">)</span>
+</span><span id="__span-2-111"><a id="__codelineno-2-111" name="__codelineno-2-111" href="#__codelineno-2-111"></a>
+</span><span id="__span-2-112"><a id="__codelineno-2-112" name="__codelineno-2-112" href="#__codelineno-2-112"></a>        <span class="c1"># Requirement not enabled, so return DoesNotApply</span>
+</span><span id="__span-2-113"><a id="__codelineno-2-113" name="__codelineno-2-113" href="#__codelineno-2-113"></a>        <span class="k">return</span> <span class="n">Requirement</span><span class="o">.</span><span class="n">EvaluateImplResult</span><span class="p">(</span><span class="n">EvaluateResult</span><span class="o">.</span><span class="n">DoesNotApply</span><span class="p">,</span>
+</span><span id="__span-2-114"><a id="__codelineno-2-114" name="__codelineno-2-114" href="#__codelineno-2-114"></a>                                              <span class="kc">None</span><span class="p">)</span>
+</span></code></pre></div>
 <h3 id="query">Query</h3>
 <p>The <code>Query.py</code> file has a class <code>ReadmeQuery</code> whose responsibility is to obtain the data needed by the requirement.
 Since multiple requirements may need ths same data, the <code>ReadmeQuery</code> runs once to obtain the data and passes it to all the requirements, thus reducing redundant operations.</p>
@@ -770,58 +772,57 @@ Since multiple requirements may need ths same data, the <code>ReadmeQuery</code>
 <li><code>def GetData(self, module_data: dict[str, Any]) -&gt; Optional[dict[str, Any]]</code>: The method which performs the act of obtaining the necessary data.</li>
 </ol>
 <p>The <code>ReadmeQuery</code> file can thus be defined as:</p>
-<pre><code class="language-python">&quot;&quot;&quot;Contains the ReadmeQuery class.&quot;&quot;&quot;
-
-from tempfile import TemporaryDirectory
-from typing import Any, Optional
-
-from dbrownell_Common.Types import override  # type: ignore[import-untyped]
-from RepoAuditor.Query import ExecutionStyle, Query
-
-from ReadmeCheck.Requirement import ReadmeRequirement
-
-class ReadmeQuery(Query):
-    &quot;&quot;&quot;Query with requirements that operate on a repository directory.&quot;&quot;&quot;
-
-    # ----------------------------------------------------------------------
-    def __init__(self) -&gt; None:
-        super().__init__(
-            &quot;ReadmeQuery&quot;,
-            ExecutionStyle.Parallel,
-
-            # Note that we can specify multiple requirements here,
-            # all of which will get the same queried data.
-            [
-                ReadmeRequirement(),
-            ],
-        )
-
-    @override
-    def GetData(
-        self,
-        module_data: dict[str, Any],
-    ) -&gt; Optional[dict[str, Any]]:
-        &quot;&quot;&quot;Get the repository directory.&quot;&quot;&quot;
-
-        # Clone the git repository to a temp directory
-        branch = module_data.get(&quot;branch&quot;, &quot;main&quot;)
-        temp_repo_dir = TemporaryDirectory()
-        url = module_data[&quot;url&quot;]
-
-        # Import git.Repo here so that it is only imported
-        # if the plugin is requested.
-        from git import Repo
-
-        # Use the Repo class to clone the repository
-        Repo.clone_from(url, temp_repo_dir.name, branch=branch)
-
-        # Record the path and the temp directory for later cleanup
-        module_data[&quot;repo_dir&quot;] = temp_repo_dir
-
-        # This module_data is passed to each requirement as `query_data`.
-        return module_data
-
-</code></pre>
+<div class="language-python highlight"><span class="filename">ReadmeCheck/Query.py</span><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="sd">&quot;&quot;&quot;Contains the ReadmeQuery class.&quot;&quot;&quot;</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">tempfile</span><span class="w"> </span><span class="kn">import</span> <span class="n">TemporaryDirectory</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Optional</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="kn">from</span><span class="w"> </span><span class="nn">dbrownell_Common.Types</span><span class="w"> </span><span class="kn">import</span> <span class="n">override</span>  <span class="c1"># type: ignore[import-untyped]</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="kn">from</span><span class="w"> </span><span class="nn">RepoAuditor.Query</span><span class="w"> </span><span class="kn">import</span> <span class="n">ExecutionStyle</span><span class="p">,</span> <span class="n">Query</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ReadmeCheck.Requirement</span><span class="w"> </span><span class="kn">import</span> <span class="n">ReadmeRequirement</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="k">class</span><span class="w"> </span><span class="nc">ReadmeQuery</span><span class="p">(</span><span class="n">Query</span><span class="p">):</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Query with requirements that operate on a repository directory.&quot;&quot;&quot;</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>    <span class="c1"># ----------------------------------------------------------------------</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>            <span class="s2">&quot;ReadmeQuery&quot;</span><span class="p">,</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>            <span class="n">ExecutionStyle</span><span class="o">.</span><span class="n">Parallel</span><span class="p">,</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>            <span class="c1"># Note that we can specify multiple requirements here,</span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>            <span class="c1"># all of which will get the same queried data.</span>
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>            <span class="p">[</span>
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>                <span class="n">ReadmeRequirement</span><span class="p">(),</span>
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>            <span class="p">],</span>
+</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>        <span class="p">)</span>
+</span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>
+</span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a>    <span class="nd">@override</span>
+</span><span id="__span-3-28"><a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">GetData</span><span class="p">(</span>
+</span><span id="__span-3-29"><a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="__span-3-30"><a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a>        <span class="n">module_data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
+</span><span id="__span-3-31"><a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span>
+</span><span id="__span-3-32"><a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the repository directory.&quot;&quot;&quot;</span>
+</span><span id="__span-3-33"><a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a>
+</span><span id="__span-3-34"><a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a>        <span class="c1"># Clone the git repository to a temp directory</span>
+</span><span id="__span-3-35"><a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a>        <span class="n">branch</span> <span class="o">=</span> <span class="n">module_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;branch&quot;</span><span class="p">,</span> <span class="s2">&quot;main&quot;</span><span class="p">)</span>
+</span><span id="__span-3-36"><a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a>        <span class="n">temp_repo_dir</span> <span class="o">=</span> <span class="n">TemporaryDirectory</span><span class="p">()</span>
+</span><span id="__span-3-37"><a id="__codelineno-3-37" name="__codelineno-3-37" href="#__codelineno-3-37"></a>        <span class="n">url</span> <span class="o">=</span> <span class="n">module_data</span><span class="p">[</span><span class="s2">&quot;url&quot;</span><span class="p">]</span>
+</span><span id="__span-3-38"><a id="__codelineno-3-38" name="__codelineno-3-38" href="#__codelineno-3-38"></a>
+</span><span id="__span-3-39"><a id="__codelineno-3-39" name="__codelineno-3-39" href="#__codelineno-3-39"></a>        <span class="c1"># Import git.Repo here so that it is only imported</span>
+</span><span id="__span-3-40"><a id="__codelineno-3-40" name="__codelineno-3-40" href="#__codelineno-3-40"></a>        <span class="c1"># if the plugin is requested.</span>
+</span><span id="__span-3-41"><a id="__codelineno-3-41" name="__codelineno-3-41" href="#__codelineno-3-41"></a>        <span class="kn">from</span><span class="w"> </span><span class="nn">git</span><span class="w"> </span><span class="kn">import</span> <span class="n">Repo</span>
+</span><span id="__span-3-42"><a id="__codelineno-3-42" name="__codelineno-3-42" href="#__codelineno-3-42"></a>
+</span><span id="__span-3-43"><a id="__codelineno-3-43" name="__codelineno-3-43" href="#__codelineno-3-43"></a>        <span class="c1"># Use the Repo class to clone the repository</span>
+</span><span id="__span-3-44"><a id="__codelineno-3-44" name="__codelineno-3-44" href="#__codelineno-3-44"></a>        <span class="n">Repo</span><span class="o">.</span><span class="n">clone_from</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">temp_repo_dir</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">branch</span><span class="o">=</span><span class="n">branch</span><span class="p">)</span>
+</span><span id="__span-3-45"><a id="__codelineno-3-45" name="__codelineno-3-45" href="#__codelineno-3-45"></a>
+</span><span id="__span-3-46"><a id="__codelineno-3-46" name="__codelineno-3-46" href="#__codelineno-3-46"></a>        <span class="c1"># Record the path and the temp directory for later cleanup</span>
+</span><span id="__span-3-47"><a id="__codelineno-3-47" name="__codelineno-3-47" href="#__codelineno-3-47"></a>        <span class="n">module_data</span><span class="p">[</span><span class="s2">&quot;repo_dir&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">temp_repo_dir</span>
+</span><span id="__span-3-48"><a id="__codelineno-3-48" name="__codelineno-3-48" href="#__codelineno-3-48"></a>
+</span><span id="__span-3-49"><a id="__codelineno-3-49" name="__codelineno-3-49" href="#__codelineno-3-49"></a>        <span class="c1"># This module_data is passed to each requirement as `query_data`.</span>
+</span><span id="__span-3-50"><a id="__codelineno-3-50" name="__codelineno-3-50" href="#__codelineno-3-50"></a>        <span class="k">return</span> <span class="n">module_data</span>
+</span></code></pre></div>
 <h3 id="module">Module</h3>
 <p>The <code>Module.py</code> file is the final file needed for implementing functionality.
 This file has a class which inherits from <code>Module</code> and sets up common dynamic arguments, such as the repository <code>url</code>, and the initial module data.</p>
@@ -832,110 +833,87 @@ This file has a class which inherits from <code>Module</code> and sets up common
 <li><code>GenerateInitialData(self, dynamic_args: dict[str, Any]) -&gt; Optional[dict[str, Any]]</code>: A method that executes before the data queries are made. Allows one to set up proper permissions and defaults.</li>
 </ol>
 <p>We define a class <code>ReadmeCheckModule</code> which implements these methods as</p>
-<pre><code class="language-python">&quot;&quot;&quot;Contains the ReadmeCheckModule object.&quot;&quot;&quot;
-
-from typing import Any, Optional
-
-import typer
-from dbrownell_Common.TyperEx import \
-    TypeDefinitionItemType  # type: ignore[import-untyped]
-from dbrownell_Common.Types import override  # type: ignore[import-untyped]
-from RepoAuditor.Module import ExecutionStyle, Module
-
-from ReadmeCheck.Query import ReadmeQuery
-
-
-class ReadmeCheckModule(Module):
-    &quot;&quot;&quot;Module for validating presence of a README file.&quot;&quot;&quot;
-
-    def __init__(self) -&gt; None:
-        super().__init__(
-            &quot;ReadmeCheck&quot;,
-            &quot;Validates presence of README file.&quot;,
-            ExecutionStyle.Parallel,
-
-            # This architecture allows us to specify multiple queries,
-            # each of which can run in parallel.
-            [
-                ReadmeQuery(),
-            ],
-            requires_explicit_include=True,
-        )
-
-    @override
-    def GetDynamicArgDefinitions(self) -&gt; dict[str, TypeDefinitionItemType]:
-        &quot;&quot;&quot;Get the definitions for the arguments to this requirement.&quot;&quot;&quot;
-        # Here we define the URL which is used to get the repository data.
-        return {
-            &quot;url&quot;: (
-                str,
-                typer.Option(
-                    ...,
-                    help=
-                    &quot;[REQUIRED] Github URL (e.g. https://github.com/gt-sse-center/RepoAuditor)&quot;,
-                ),
-            ),
-        }
-
-    @override
-    def GenerateInitialData(
-            self, dynamic_args: dict[str, Any]) -&gt; Optional[dict[str, Any]]:
-        &quot;&quot;&quot;Generate the initial data to be used in the `dynamic_args`, such as session info, etc.&quot;&quot;&quot;
-        # Nothing to do so we just return the dynamic_args.
-        # In alternative cases, we can set up things like
-        # the GitHub personal access token here.
-        return dynamic_args
-
-</code></pre>
-<h3 id="pluginpy">Plugin.py</h3>
+<div class="language-python highlight"><span class="filename">ReadmeCheck/Module.py</span><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="sd">&quot;&quot;&quot;Contains the ReadmeCheckModule object.&quot;&quot;&quot;</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Optional</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">typer</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="kn">from</span><span class="w"> </span><span class="nn">dbrownell_Common.TyperEx</span><span class="w"> </span><span class="kn">import</span> \
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    <span class="n">TypeDefinitionItemType</span>  <span class="c1"># type: ignore[import-untyped]</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="kn">from</span><span class="w"> </span><span class="nn">dbrownell_Common.Types</span><span class="w"> </span><span class="kn">import</span> <span class="n">override</span>  <span class="c1"># type: ignore[import-untyped]</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="kn">from</span><span class="w"> </span><span class="nn">RepoAuditor.Module</span><span class="w"> </span><span class="kn">import</span> <span class="n">ExecutionStyle</span><span class="p">,</span> <span class="n">Module</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ReadmeCheck.Query</span><span class="w"> </span><span class="kn">import</span> <span class="n">ReadmeQuery</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="k">class</span><span class="w"> </span><span class="nc">ReadmeCheckModule</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Module for validating presence of a README file.&quot;&quot;&quot;</span>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>            <span class="s2">&quot;ReadmeCheck&quot;</span><span class="p">,</span>
+</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>            <span class="s2">&quot;Validates presence of README file.&quot;</span><span class="p">,</span>
+</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>            <span class="n">ExecutionStyle</span><span class="o">.</span><span class="n">Parallel</span><span class="p">,</span>
+</span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>
+</span><span id="__span-4-23"><a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a>            <span class="c1"># This architecture allows us to specify multiple queries,</span>
+</span><span id="__span-4-24"><a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a>            <span class="c1"># each of which can run in parallel.</span>
+</span><span id="__span-4-25"><a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a>            <span class="p">[</span>
+</span><span id="__span-4-26"><a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a>                <span class="n">ReadmeQuery</span><span class="p">(),</span>
+</span><span id="__span-4-27"><a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a>            <span class="p">],</span>
+</span><span id="__span-4-28"><a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a>            <span class="n">requires_explicit_include</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span id="__span-4-29"><a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a>        <span class="p">)</span>
+</span><span id="__span-4-30"><a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a>
+</span><span id="__span-4-31"><a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a>    <span class="nd">@override</span>
+</span><span id="__span-4-32"><a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">GetDynamicArgDefinitions</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">TypeDefinitionItemType</span><span class="p">]:</span>
+</span><span id="__span-4-33"><a id="__codelineno-4-33" name="__codelineno-4-33" href="#__codelineno-4-33"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the definitions for the arguments to this requirement.&quot;&quot;&quot;</span>
+</span><span id="__span-4-34"><a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a>        <span class="c1"># Here we define the URL which is used to get the repository data.</span>
+</span><span id="__span-4-35"><a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a>        <span class="k">return</span> <span class="p">{</span>
+</span><span id="__span-4-36"><a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a>            <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="p">(</span>
+</span><span id="__span-4-37"><a id="__codelineno-4-37" name="__codelineno-4-37" href="#__codelineno-4-37"></a>                <span class="nb">str</span><span class="p">,</span>
+</span><span id="__span-4-38"><a id="__codelineno-4-38" name="__codelineno-4-38" href="#__codelineno-4-38"></a>                <span class="n">typer</span><span class="o">.</span><span class="n">Option</span><span class="p">(</span>
+</span><span id="__span-4-39"><a id="__codelineno-4-39" name="__codelineno-4-39" href="#__codelineno-4-39"></a>                    <span class="o">...</span><span class="p">,</span>
+</span><span id="__span-4-40"><a id="__codelineno-4-40" name="__codelineno-4-40" href="#__codelineno-4-40"></a>                    <span class="n">help</span><span class="o">=</span>
+</span><span id="__span-4-41"><a id="__codelineno-4-41" name="__codelineno-4-41" href="#__codelineno-4-41"></a>                    <span class="s2">&quot;[REQUIRED] Github URL (e.g. https://github.com/gt-sse-center/RepoAuditor)&quot;</span><span class="p">,</span>
+</span><span id="__span-4-42"><a id="__codelineno-4-42" name="__codelineno-4-42" href="#__codelineno-4-42"></a>                <span class="p">),</span>
+</span><span id="__span-4-43"><a id="__codelineno-4-43" name="__codelineno-4-43" href="#__codelineno-4-43"></a>            <span class="p">),</span>
+</span><span id="__span-4-44"><a id="__codelineno-4-44" name="__codelineno-4-44" href="#__codelineno-4-44"></a>        <span class="p">}</span>
+</span><span id="__span-4-45"><a id="__codelineno-4-45" name="__codelineno-4-45" href="#__codelineno-4-45"></a>
+</span><span id="__span-4-46"><a id="__codelineno-4-46" name="__codelineno-4-46" href="#__codelineno-4-46"></a>    <span class="nd">@override</span>
+</span><span id="__span-4-47"><a id="__codelineno-4-47" name="__codelineno-4-47" href="#__codelineno-4-47"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">GenerateInitialData</span><span class="p">(</span>
+</span><span id="__span-4-48"><a id="__codelineno-4-48" name="__codelineno-4-48" href="#__codelineno-4-48"></a>            <span class="bp">self</span><span class="p">,</span> <span class="n">dynamic_args</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span>
+</span><span id="__span-4-49"><a id="__codelineno-4-49" name="__codelineno-4-49" href="#__codelineno-4-49"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate the initial data to be used in the `dynamic_args`, such as session info, etc.&quot;&quot;&quot;</span>
+</span><span id="__span-4-50"><a id="__codelineno-4-50" name="__codelineno-4-50" href="#__codelineno-4-50"></a>        <span class="c1"># Nothing to do so we just return the dynamic_args.</span>
+</span><span id="__span-4-51"><a id="__codelineno-4-51" name="__codelineno-4-51" href="#__codelineno-4-51"></a>        <span class="c1"># In alternative cases, we can set up things like</span>
+</span><span id="__span-4-52"><a id="__codelineno-4-52" name="__codelineno-4-52" href="#__codelineno-4-52"></a>        <span class="c1"># the GitHub personal access token here.</span>
+</span><span id="__span-4-53"><a id="__codelineno-4-53" name="__codelineno-4-53" href="#__codelineno-4-53"></a>        <span class="k">return</span> <span class="n">dynamic_args</span>
+</span></code></pre></div>
+<h3 id="plugin">Plugin</h3>
 <p>This is the easiest file, and has the code which tells <code>pluggy</code> how to load our custom plugin into <code>RepoAuditor</code>.</p>
-<pre><code class="language-python">&quot;&quot;&quot;Contains Plugin functionality.&quot;&quot;&quot;
-
-import pluggy
-from RepoAuditor import APP_NAME
-from RepoAuditor.Module import Module
-
-from ReadmeCheck.Module import ReadmeCheckModule
-
-
-@pluggy.HookimplMarker(APP_NAME)
-def GetModule() -&gt; Module:
-    &quot;&quot;&quot;Return ReadMeCheck Module.&quot;&quot;&quot;
-    return ReadmeCheckModule()
-</code></pre>
+<div class="language-python highlight"><span class="filename">ReadmeCheck/Plugin.py</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="sd">&quot;&quot;&quot;Contains Plugin functionality.&quot;&quot;&quot;</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pluggy</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">RepoAuditor</span><span class="w"> </span><span class="kn">import</span> <span class="n">APP_NAME</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">RepoAuditor.Module</span><span class="w"> </span><span class="kn">import</span> <span class="n">Module</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ReadmeCheck.Module</span><span class="w"> </span><span class="kn">import</span> <span class="n">ReadmeCheckModule</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="nd">@pluggy</span><span class="o">.</span><span class="n">HookimplMarker</span><span class="p">(</span><span class="n">APP_NAME</span><span class="p">)</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="k">def</span><span class="w"> </span><span class="nf">GetModule</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Module</span><span class="p">:</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Return ReadMeCheck Module.&quot;&quot;&quot;</span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>    <span class="k">return</span> <span class="n">ReadmeCheckModule</span><span class="p">()</span>
+</span></code></pre></div>
 <p>Here, we simply load the app name from <code>RepoAuditor</code> as <code>APP_NAME</code> and implement a <code>GetModule</code> function with the <code>@pluggy.HookimplMarker</code> decorator.</p>
 <p>All the <code>GetModule</code> function has to do is return the appropriate module, a.k.a. <code>ReadmeCheckModule()</code>.</p>
 <h2 id="running-the-plugin">Running the Plugin</h2>
 <p>At this point, we are ready to execute our custom plugin.</p>
-<p>We start by installing it:</p>
-<pre><code class="language-sh">uv pip install -e .
-</code></pre>
-<p>After this, we simply call <code>RepoAuditor</code> and specify our custom module in the <code>--include</code> flag.</p>
-<pre><code class="language-sh">uv run repoauditor --include ReadmeCheck --ReadmeCheck-url https://github.com/varunagrawal/RepoAuditor
-</code></pre>
-<p>You should see the output:</p>
-<pre><code class="language-sh">╭──────────────────────────────── ReadmeCheck ─────────────────────────────────╮
-│                                                                              │
-│ Validates presence of README file.                                           │
-│                                                                              │
-│                                                                              │
-│ Successful:     1 (100.00%)                                                  │
-│ Warnings:       0 (0.00%)                                                    │
-│ Errors:         0 (0.00%)                                                    │
-│ Skipped:        0 (0.00%)                                                    │
-│                                                                              │
-│ ╭─ Metrics ────────────────────────────────────────────────────────────────╮ │
-│ │                                                                          │ │
-│ │                                                                          │ │
-│ │ Successful:     1 (100.00%)                                              │ │
-│ │ Warnings:       0 (0.00%)                                                │ │
-│ │ Errors:         0 (0.00%)                                                │ │
-│ │ Skipped:        0 (0.00%)                                                │ │
-│ │                                                                          │ │
-│ ╰──────────────────────────────────────────────────────────────────────────╯ │
-│                                                                              │
-╰──────────────────────────────────────────────────────────────────────────────╯
-</code></pre>
+<p>We start by installing the package locally.</p>
+<div class="termy" data-termynal data-ty-macos data-ty-title="bash"><span data-ty="input" data-ty-prompt="$">uv pip install -e .</span><span data-ty>Resolved 25 packages in 13ms<br>      Built readmecheck @ file:///Users/gt-sse-center/gt-sse/ReadmeCheck<br>Prepared 1 package in 648ms<br>Uninstalled 1 package in 1ms<br>Installed 1 package in 2ms<br> ~ readmecheck==0.0.0 (from file:///Users/gt-sse-center/gt-sse/ReadmeCheck)<br></span></div>
+
+<p>After this, we simply call <code>RepoAuditor</code> and specify our custom module in the <code>--include</code> flag, which should yield the following result:</p>
+<div class="termy" data-termynal data-ty-macos data-ty-title="bash"><span data-ty="input" data-ty-prompt="$">uv run repoauditor --include ReadmeCheck \
+    --ReadmeCheck-url https://github.com/gt-sse-center/RepoAuditor</span><span data-ty>Processing 1 module...<br>  Processing 'ReadmeCheck' (1 of 1)...<br>  Processing 'ReadmeCheck' (1 of 1)...DONE! (0, 0:00:00.697564):00 ✅<br>DONE! (0, 0:00:00.697655)<br>╭─────────────────────────── ReadmeCheck ───────────────────────────╮<br>│                                                                   │<br>│ Validates presence of README file.                                │<br>│                                                                   │<br>│                                                                   │<br>│ Successful:     1 (100.00%)                                       │<br>│ Warnings:       0 (0.00%)                                         │<br>│ Errors:         0 (0.00%)                                         │<br>│ Skipped:        0 (0.00%)                                         │<br>│                                                                   │<br>│ ╭─ Metrics ─────────────────────────────────────────────────────╮ │<br>│ │                                                               │ │<br>│ │                                                               │ │<br>│ │ Successful:     1 (100.00%)                                   │ │<br>│ │ Warnings:       0 (0.00%)                                     │ │<br>│ │ Errors:         0 (0.00%)                                     │ │<br>│ │ Skipped:        0 (0.00%)                                     │ │<br>│ │                                                               │ │<br>│ ╰───────────────────────────────────────────────────────────────╯ │<br>│                                                                   │<br>╰───────────────────────────────────────────────────────────────────╯<br></span></div>
+
 <p>This indicates that our plugin was successfully loaded and executed by <code>RepoAuditor</code>.</p>
 <h2 id="conclusion">Conclusion</h2>
 <p>In this tutorial, we learned how to write a custom plugin for <code>RepoAuditor</code>, and all the necessary modules and classes we need to implement our plugin.</p>
